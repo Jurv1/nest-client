@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package posts;
+
+//POSTS_SERVICE
+service PostsService {
+    rpc GetPost (GetPostRequest) returns (GetPostResponse);
+    rpc GetPosts (GetPostsRequest) returns (GetPostsResponse);
+    rpc CreatePost (CreatePostRequest) returns (CreatePostResponse);
+}
+
+message GetPostRequest {
+    int64 id = 1;
+}
+
+message GetPostResponse {
+    string name = 1;
+}
+
+message GetPostsRequest {
+    string filter = 1;
+}
+
+message GetPostsResponse {
+    repeated string names = 1;
+}
+
+message CreatePostRequest {
+    string name = 1;
+}
+
+message CreatePostResponse {
+    int64 id = 1;
+    string name = 2;
+}

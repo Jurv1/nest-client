@@ -1,0 +1,61 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID
+  email: String
+  password: String
+  login: String
+  name: String
+  address: String
+  description: String
+}
+
+type Posts {
+  id: Int!
+  title: String!
+  shortDescription: String!
+  content: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Blog {
+  id: Int!
+  name: String!
+  description: String!
+  websiteUrl: String!
+  createdAt: DateTime!
+  posts: [Posts!]!
+}
+
+type Query {
+  getUser(id: Int!): User!
+  getAllBlogs(input: BlogsPublicQueryInputTypes!): [Blog!]!
+  getBlog(id: Int!): Blog!
+  getPosts: [Posts!]!
+  getPost(id: Int!): Posts!
+}
+
+input BlogsPublicQueryInputTypes {
+  searchNameTerm: String!
+  sortBy: String!
+  sortDirection: String!
+  pageNumber: String!
+  pageSize: String!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
